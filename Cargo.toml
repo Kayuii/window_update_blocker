@@ -2,14 +2,14 @@
 name = "windows_update_blocker"
 version = "0.1.0"
 edition = "2021"
+authors = ["gecko"]
+description = "A Windows service that blocks Windows updates"
+license = "MIT"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
 own-logger = { path = "libs/own_logger" }
-# own-runtime = { path="libs/own_runtime" }
-# own-measure = { path="libs/own_measure" }
-# own-sdk = { path="libs/own_sdk" }
 
 clap = { version = "4.2", features = ["derive"] }
 once_cell = "1.18.0"
@@ -34,7 +34,7 @@ is-terminal = "0.4.7"
 tracing-subscriber = { version = "0.3", features = ["env-filter"] }
 tracing = { version = "0.1.40", default-features = false }
 
-winreg = "0.11"
+winreg = "0.52.0"
 windows-service = "0.6"
 winapi = { version = "0.3.9", features = ["winuser", "tlhelp32", "handleapi", "restartmanager", "securitybaseapi"] }
 windows-sys = { version = "0.52.0", features = [
@@ -53,7 +53,12 @@ windows-sys = { version = "0.52.0", features = [
 [workspace]
 members = [
   "libs/own_logger",
-  # "libs/own_runtime",
-  # "libs/own_measure",
-  # "libs/own_sdk",
 ]
+
+[profile.release]
+lto = true
+codegen-units = 1
+panic = 'abort'
+strip = true
+#opt-level = 'z' # only have smaller size after strip
+rpath = true
