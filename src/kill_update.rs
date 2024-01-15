@@ -21,7 +21,7 @@ pub fn kill() -> anyhow::Result<()> {
         let serv_config = serv_get_config(name);
         match serv_config {
             Ok(config) => {
-                if config.start_type == ServiceStartType::Disabled {
+                if config.start_type != ServiceStartType::Disabled {
                     let path = config.executable_path.to_str().unwrap();
 
                     let split_path: Vec<&str> = split_unquoted_whitespace(path)

@@ -55,6 +55,9 @@ members = [
   "libs/own_logger",
 ]
 
+[build-dependencies]
+chrono = "0.4.31"
+
 [profile.release]
 lto = true
 codegen-units = 1
