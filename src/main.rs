@@ -14,10 +14,10 @@ use windows_service::{
     service_control_handler::{self, ServiceControlHandlerResult},
     service_dispatcher,
 };
-use windows_update_blocker::{os::windows::is_elevated, 
+use window_update_blocker::{os::windows::is_elevated, 
     serv_install, serv_uninstall, serv_start, serv_stop,
 };
-use windows_update_blocker::{Logging, ServiceStatusEx, WindowsService, SERVICE_TYPE};
+use window_update_blocker::{Logging, ServiceStatusEx, WindowsService, SERVICE_TYPE};
 
 const SERVICE_NAME: &str = "WindowsUpdateBlocker.rs";
 const SERVICE_DESCRIPTION: &str = "Blocker for Windows Update";

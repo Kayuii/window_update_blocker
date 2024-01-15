@@ -11,7 +11,7 @@ use tracing_subscriber::EnvFilter;
 
 pub const DEFAULT_LOG_FILTER: &[&'static str] = &[
     "own_logger",
-    "windows_update_blocker",
+    "window_update_blocker",
     "hyper=info",
     "mio=info",
     "reqwest=warn",
@@ -54,7 +54,7 @@ impl Logging {
             level: Some(level),
             ..Default::default()
         };
-        gol::init_logging("windows_update_blocker", &opts);
+        gol::init_logging("window_update_blocker", &opts);
     }
 
     fn log_filter(&self) -> EnvFilter {
